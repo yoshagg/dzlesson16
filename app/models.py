@@ -1,5 +1,4 @@
-from . import db
-
+from __init__ import db
 
 class User(db.Model):
     __tablename__ = "users"
@@ -12,7 +11,7 @@ class User(db.Model):
     role = db.Column(db.String(100))
     phone = db.Column(db.String(16))
 
-    def to_dict_user(self):
+    def to_dict(self):
         return {
             "id": self.id,
             "first_name": self.first_name,
@@ -31,7 +30,7 @@ class Offer(db.Model):
     order_id = db.Column(db.Integer)
     executor_id = db.Column(db.Integer)
 
-    def to_dict_offer(self):
+    def to_dict(self):
         return {
             "id": self.id,
             "order_id": self.order_id,
@@ -52,7 +51,7 @@ class Order(db.Model):
     customer_id = db.Column(db.Integer)
     executor_id = db.Column(db.Integer)
 
-    def to_dict_order(self):
+    def to_dict(self):
         return {
             "id": self.id,
             "name": self.name,

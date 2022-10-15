@@ -1,10 +1,11 @@
 import json
-from . import models, db
+import models
+from __init__ import db
 
 
 def load_data(filename):
     json_data = []
-    with open(filename) as file:
+    with open(filename, 'r', encoding='utf-8') as file:
         json_data == json.load(file)
 
     return json_data
@@ -45,6 +46,6 @@ def load_orders(filename):
 
     print(models.Order.get(1).to_dict_order())
 
-load_users('users.json')
-load_offers('offers.json')
-load_orders('orders.json')
+load_users('data/users.json')
+load_offers('data/offers.json')
+load_orders('data/orders.json')
