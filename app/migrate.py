@@ -1,6 +1,6 @@
 import json
 from . import models
-from __init__ import db
+from app import db
 
 
 def load_data(filename):

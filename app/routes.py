@@ -1,6 +1,6 @@
 from . import models
 from flask import current_app as app, request, jsonify
-from __init__ import db
+from app import db
 
 
 @app.route('/')
