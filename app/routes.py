@@ -1,4 +1,4 @@
-import models
+from . import models
 from flask import current_app as app, request, jsonify
 from __init__ import db
 
@@ -18,7 +18,7 @@ def users_page():
     elif request.method == 'POST':
         user_data = request.json
 
-        new_user = models.User(**json_data)
+        new_user = models.User(**user_data)
 
         db.session.add(new_user)
         db.session.commit()
@@ -56,7 +56,7 @@ def user_function(uid):
         db.session.delete(user)
         db.session.commit
 
-        return **, 204
+        return None, 204
 
 
 @app.route('/offers', methods=['GET', 'POST'])
@@ -69,9 +69,9 @@ def offers_page():
     elif request.method == 'POST':
         offer_data = request.json
 
-        new_offer = models.Offer(**json_data)
+        new_offer = models.Offer(**offer_data)
 
-        db.session.add(offer_user)
+        db.session.add(new_offer)
         db.session.commit()
 
         result = []
@@ -103,7 +103,7 @@ def offer_function(uid):
         db.session.delete(offer)
         db.session.commit
 
-        return **, 204
+        return None, 204
 
 
 @app.route('/orders', methods=['GET', 'POST'])
@@ -116,9 +116,9 @@ def orders_page():
     elif request.method == 'POST':
         order_data = request.json
 
-        new_order = models.Order(**json_data)
+        new_order = models.Order(**order_data)
 
-        db.session.add(order_user)
+        db.session.add(new_order)
         db.session.commit()
 
         result = []
@@ -156,4 +156,4 @@ def order_function(uid):
         db.session.delete(order)
         db.session.commit
 
-        return **, 204
+        return None, 204

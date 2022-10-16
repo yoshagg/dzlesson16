@@ -15,9 +15,7 @@ def create_app():
         db.create_all()
         from . import migrate
         migrate.load_users('data/users.json')
-        migrate.load_offer('data/offers.json')
-        migrate.load_order('data/orders.json')
-
-        db.session.add_all(users, offers, orders)
+        migrate.load_offers('data/offers.json')
+        migrate.load_orders('data/orders.json')
 
     return app

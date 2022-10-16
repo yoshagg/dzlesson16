@@ -1,5 +1,5 @@
 import json
-import models
+from . import models
 from __init__ import db
 
 
@@ -45,6 +45,7 @@ def load_orders(filename):
     db.session.commit()
 
     print(models.Order.get(1).to_dict_order())
+
 
 load_users('data/users.json')
 load_offers('data/offers.json')
