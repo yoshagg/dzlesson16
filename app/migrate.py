@@ -20,7 +20,7 @@ def load_users(filename):
 
     db.session.commit()
 
-    print(models.User.get(1).to_dict_user())
+    print(models.User.query.get(1).to_dict())
 
 
 def load_offers(filename):
@@ -32,7 +32,7 @@ def load_offers(filename):
 
     db.session.commit()
 
-    print(models.Offer.get(1).to_dict_offer())
+    print(models.Offer.query.get(1).to_dict())
 
 
 def load_orders(filename):
@@ -44,7 +44,7 @@ def load_orders(filename):
 
     db.session.commit()
 
-    print(models.Order.get(1).to_dict_order())
+    print(models.Order.query.get(1).to_dict())
 
 
 load_users('data/users.json')
