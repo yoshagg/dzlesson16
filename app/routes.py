@@ -10,8 +10,8 @@ def foo():
 
 @app.route('/users', methods=['GET', 'POST'])
 def users_page():
+    result = []
     if request.method == 'GET':
-        result = []
         for user in models.User.query.all():
             result.append(user.to_dict())
             return jsonify(result), 200
@@ -23,11 +23,10 @@ def users_page():
         db.session.add(new_user)
         db.session.commit()
 
-        result = []
         for user in models.User.query.all():
             result.append(user.to_dict())
 
-        return jsonify(result), 200
+    return jsonify(result), 200
 
 
 @app.route('/users/<int:uid>', methods=['GET', 'PUT', 'DELETE'])
@@ -95,7 +94,6 @@ def offer_function(uid):
         db.session.add(offer)
         db.session.commit()
 
-        offer = models.Offer.query.get(uid)
         return jsonify(offer.to_dict()), 200
 
     elif request.method == 'DELETE':
@@ -103,13 +101,13 @@ def offer_function(uid):
         db.session.delete(offer)
         db.session.commit
 
-        return None, 204
+        return 'Удаление успешно выполнено', 204
 
 
 @app.route('/orders', methods=['GET', 'POST'])
 def orders_page():
+    result = []
     if request.method == 'GET':
-        result = []
         for order in models.Order.query.all():
             result.append(order.to_dict())
             return jsonify(result), 200
@@ -121,7 +119,6 @@ def orders_page():
         db.session.add(new_order)
         db.session.commit()
 
-        result = []
         for order in models.Order.query.all():
             result.append(order.to_dict())
 
@@ -156,4 +153,4 @@ def order_function(uid):
         db.session.delete(order)
         db.session.commit
 
-        return None, 204
+        return 'Удаление завершено успешно', 204
