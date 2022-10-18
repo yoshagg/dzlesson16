@@ -55,7 +55,7 @@ def user_function(uid):
         db.session.delete(user)
         db.session.commit
 
-        return None, 204
+        return 'Удаление успешно завершено', 204
 
 
 @app.route('/offers', methods=['GET', 'POST'])
