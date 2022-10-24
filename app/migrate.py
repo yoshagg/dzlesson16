@@ -6,7 +6,7 @@ from app import db
 def load_data(filename):
     json_data = ""
     with open(filename, 'r') as file:
-        json_data == json.load(file)
+        json_data = json.load(file)
 
     return json_data
 

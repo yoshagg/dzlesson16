@@ -1,4 +1,4 @@
-from . import models
+from app import models
 from flask import current_app as app, request, jsonify
 from app import db
 
@@ -14,7 +14,7 @@ def users_page():
     if request.method == 'GET':
         for user in models.User.query.all():
             result.append(user.to_dict())
-            return jsonify(result), 200
+        return jsonify(result), 200
     elif request.method == 'POST':
         user_data = request.json
 

@@ -12,11 +12,11 @@ def create_app():
     with app.app_context():
         db.init_app(app)
         from . import routes
-        db.drop_all()
-        db.create_all()
-        from . import migrate
-        migrate.load_users('data/users.json')
-        migrate.load_offers('data/offers.json')
-        migrate.load_orders('data/orders.json')
+    #     db.drop_all()
+    #     db.create_all()
+    #     from . import migrate
+    #     migrate.load_users('data/users.json')
+    #     migrate.load_offers('data/offers.json')
+    #     migrate.load_orders('data/orders.json')
 
     return app
