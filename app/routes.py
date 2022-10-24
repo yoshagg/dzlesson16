@@ -32,8 +32,8 @@ def users_page():
 @app.route('/users/<int:uid>', methods=['GET', 'PUT', 'DELETE'])
 def user_function(uid):
     if request.method == 'GET':
-        user = models.User.query.all(uid)
-        return jsonify(user.to_dict()), 200
+        user = models.User.query.filter(models.User.id == uid).one()
+        return jsonify(user.to_dict())
     elif request.method == 'PUT':
         user_data = request.json
         user = models.User.query.get(uid)
@@ -64,7 +64,7 @@ def offers_page():
         result = []
         for offer in models.Offer.query.all():
             result.append(offer.to_dict())
-            return jsonify(result), 200
+        return jsonify(result), 200
     elif request.method == 'POST':
         offer_data = request.json
 
@@ -83,7 +83,7 @@ def offers_page():
 @app.route('/offers/<int:uid>', methods=['GET', 'PUT', 'DELETE'])
 def offer_function(uid):
     if request.method == 'GET':
-        offer = models.Offer.query.all(uid)
+        offer = models.Offer.query.filter(models.Offer.id == uid).one()
         return jsonify(offer.to_dict()), 200
     elif request.method == 'PUT':
         offer_data = request.json
@@ -110,7 +110,7 @@ def orders_page():
     if request.method == 'GET':
         for order in models.Order.query.all():
             result.append(order.to_dict())
-            return jsonify(result), 200
+        return jsonify(result), 200
     elif request.method == 'POST':
         order_data = request.json
 
@@ -128,7 +128,7 @@ def orders_page():
 @app.route('/orders/<int:uid>', methods=['GET', 'PUT', 'DELETE'])
 def order_function(uid):
     if request.method == 'GET':
-        order = models.Offer.query.all(uid)
+        order = models.Order.query.filter(models.Order.id == uid).one()
         return jsonify(order.to_dict()), 200
     elif request.method == 'PUT':
         order_data = request.json
