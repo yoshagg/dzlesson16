@@ -3,7 +3,6 @@ from app import db, models
 
 
 def load_data(filename):
-    json_data = ""
     with open(filename, 'r') as file:
         json_data = json.load(file)
 
@@ -44,8 +43,3 @@ def load_orders(filename):
     db.session.commit()
 
     return orders
-
-
-load_users('data/users.json')
-load_offers('data/offers.json')
-load_orders('data/orders.json')

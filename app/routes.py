@@ -78,7 +78,7 @@ def offers_page():
             result.append(offer.to_dict())
 
         return jsonify(result), 200
-
+False
 
 @app.route('/offers/<int:uid>', methods=['GET', 'PUT', 'DELETE'])
 def offer_function(uid):
